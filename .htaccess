@@ -1,0 +1,5 @@
+DirectoryIndex index.php
+RewriteEngine on
+RewriteCond $1 !^(index\.php|robots\.txt)|\.(css|jpeg|jpg|gif|swf|png|xml|ico|js|bmp|cur|doc|eof|htm|php|gz|mp4)$
+RewriteCond $1 !^(edit.*)$
+RewriteRule ^(.*)$ /data/ju/zuji/index.php/$1 [L]
