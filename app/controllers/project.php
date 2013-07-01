@@ -34,6 +34,7 @@ class Project extends CI_Controller {
 			$this->form_validation->set_error_delimiters('<span class="help-inline">','</span>');
 			$this->form_validation->set_rules('title','仓库名称','trim|required');
 			$this->form_validation->set_rules('address','仓库地址','trim|required');
+			$this->form_validation->set_rules('yewu_title','业务/组件名称','trim|required');
 			$this->form_validation->set_rules('memo','仓库描述','trim|required');
 			$flag = false;
 			if($this->form_validation->run() == false){
@@ -46,6 +47,7 @@ class Project extends CI_Controller {
 				$db = array(
 					'title' => $title,
 					'address' => set_value('address'),
+					'yewu_title' => set_value('yewu_title'),
 					'memo' => set_value('memo'),
 				);
 				if($id){
@@ -82,5 +84,17 @@ class Project extends CI_Controller {
 		$data['success'] = _sess('success');
 		$data['error'] = _sess('error');
 		_v('project/repo_form.tpl', $data);
+	}
+
+	public function repo_del(){
+		if(!face_admin()){
+			go_login();
+		}
+		$id = (int)_seg(3);
+		if(_db()->query("delete from repo where id = $id")){
+			json(200, '删除成功');
+		}else{
+			json(201, '删除失败');
+		}
 	}
 }

@@ -2,7 +2,7 @@
 <div class="adminbody">
 	<section id="main">
 
-		<form class="well" action="<?=B?>/project/add_version/<?=$id?>" method="post" enctype="multipart/form-data">
+		<form class="well" action="<?=B?>/version/add_version/<?=$id?>" method="post" enctype="multipart/form-data">
 			<div class="control-group <?if(form_error('title')) echo 'error';?>">
 				<label>项目名称</label>
 				<input type="text" class="span3" name="title" value="" placeholder="">

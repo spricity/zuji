@@ -9,6 +9,12 @@
 			<?php echo form_error('title')?>
 		</div>
 
+		<div class="control-group <?if(form_error('title')) echo 'error';?>">
+			<label>业务/组件名称</label>
+			<input type="text" name="yewu_title" value="<?if( isset($repo)) echo $repo->yewu_title;?>" id="yewu_title" />
+			<?php echo form_error('yewu_title')?>
+		</div>
+
 		<div class="control-group <?if(form_error('address')) echo 'error';?>">
 			<label>仓库地址<span style="font-size:11px;color:gray;">链接请用英文[ ]：[http://f2e.dp/face]</span></label>
 			<input type="text" name="address" value="<?if( isset($repo)) echo $repo->address;?>" id="address" />

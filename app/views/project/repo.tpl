@@ -9,11 +9,11 @@
 				<tr>
 					<th style="width:1%;">id</th>
 					<th style="width:6%;">仓库名称</th>
-					<th style="width:16%;">仓库地址</th>
+					<th style="width:8%;">业务/组件名称</th>
 					<th style="width:6%;">最新版本</th>
 					<th style="width:6%;">最新创建者</th>
 					<th style="width:8%;">最新日期</th>
-					<?if(is_login()):?><th style="width:5%;">操作</th><?endif?>
+					<?if(is_login()):?><th style="width:8%;">操作</th><?endif?>
 				</tr>
 			</thead>
 			<tbody>
@@ -21,8 +21,8 @@
 				<?php $i=1;foreach($repo as $dt):?>
 				<tr>
 					<td><?=$i?></td>
-					<td><?=$dt->title?></td>
-					<td><a href="<?=$dt->address?>" target="_blank"><?=$dt->address?></a></td>
+					<td><a href="<?=$dt->address?>" target="_blank"><?=$dt->title?></a></td>
+					<td><?=$dt->yewu_title?></td>
 
 					<?if(isset($version[$dt->id])):?>
 						<td><?=$version[$dt->id]->version?></td>
@@ -49,7 +49,9 @@
 					<td>
 						<a href="<?=B?>/project/repo_form/<?=$dt->id?>" class="btn btn-primary btn-mini">编辑</a>
 						<a href="<?=B?>/version/add_version/<?=$dt->id?>" class="btn btn-primary btn-mini">版本+1</a>
-						<!-- <a href="javascript:;" rel="<?=B?>/admin/news/del/<?=$dt->id?>" title="确认删除" class="J_confirm btn btn-mini">删除</a> -->
+						<?if(face_admin()):?>
+						<a href="javascript:;" rel="<?=B?>/project/repo_del/<?=$dt->id?>" title="确认删除，不可恢复" class="J_confirm btn btn-mini">删除</a>
+						<?endif?>
 					</td>
 					<?endif?>
 				</tr>
